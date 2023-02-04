@@ -1,4 +1,4 @@
-package faune;
+package espece.faune;
 
 import java.util.Date;
 

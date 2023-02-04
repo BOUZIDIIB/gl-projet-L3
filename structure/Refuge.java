@@ -2,8 +2,8 @@ package structure;
 
 import java.util.ArrayList;
 
-import evolution.EvolutionStructure;
-import faune.Animal;
+import espece.evolution.EvolutionStructure;
+import espece.faune.Animal;
 
 public abstract class Refuge extends Structure{
 

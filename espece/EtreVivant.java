@@ -1,9 +1,9 @@
 package espece;
 
-import notion.EtatSante;
+import notion.Mortel;
 import stucture_base.Element;
 
-public abstract class EtreVivant extends Element{
+public abstract class EtreVivant extends Element implements Mortel{
 	private Milieu milieu ;
 	private int dureeVie;
 	private float prixAchat ;
@@ -12,13 +12,13 @@ public abstract class EtreVivant extends Element{
 	
 
 	public EtreVivant( int nbCase, int ligne_init, int colonne_init, Milieu milieu, int dureeVie,
-			float prixAchat, float niveauEau, EtatSante etatSante) {
+			float prixAchat, float niveauEau) {
 		super(true, nbCase, ligne_init, colonne_init);
 		this.milieu = milieu;
 		this.dureeVie = dureeVie;
 		this.prixAchat = prixAchat;
 		this.niveauEau = niveauEau;
-		this.etatSante = etatSante;
+		this.etatSante = EtatSante.BONNE_SANTE;
 	}
 
 
@@ -54,11 +54,45 @@ public abstract class EtreVivant extends Element{
 	public EtatSante getEtatSante() {
 		return etatSante;
 	}
-
-
-	public void setEtatSante(EtatSante etatSante) {
-		this.etatSante = etatSante;
-	}
 	
+	public void empireEtatSante() throws MortException{
+		switch(etatSante){
+			case BONNE_SANTE:
+				etatSante = EtatSante.MALADE;
+				break;
+			case MALADE:
+				etatSante = EtatSante.GRAVEMENT_MALADE;
+				break; 
+			case GRAVEMENT_MALADE:
+				etatSante = EtatSante.MOURANT;
+				break;
+			default :
+				throw new MortException(this);	
+		}
+	}
+    public void amelioreEtatSante() throws EstDejaEnBonneSanteException{
+		switch(etatSante){
+			case MALADE:
+				etatSante = EtatSante.BONNE_SANTE;
+				break;
+			case GRAVEMENT_MALADE:
+				etatSante = EtatSante.MALADE;
+				break;
+			case MOURANT:
+				etatSante = EtatSante.GRAVEMENT_MALADE;
+				break;
+			default :
+				throw new EstDejaEnBonneSanteException(this);
+		}
+	}
+    public void guerir() throws EstDejaEnBonneSanteException{
+		switch(etatSante){
+			case BONNE_SANTE:
+				throw new EstDejaEnBonneSanteException(this);
+			default:
+				etatSante = EtatSante.BONNE_SANTE;
+		}
+	}
+
 
 }

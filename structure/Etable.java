@@ -2,7 +2,7 @@ package structure;
 
 import java.util.ArrayList;
 
-import faune.Animal;
+import espece.faune.Animal;
 
 public class Etable extends Refuge {
 	

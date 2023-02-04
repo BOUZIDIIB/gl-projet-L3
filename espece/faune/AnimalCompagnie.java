@@ -1,10 +1,9 @@
-package faune;
+package espece.faune;
 
 import java.util.Date;
 
 import espece.Milieu;
-import evolution.EvolutionAnimal;
-import notion.EtatSante;
+import espece.evolution.EvolutionAnimal;
 import structure.Structure;
 
 public abstract class AnimalCompagnie extends Animal  {

@@ -1,6 +1,6 @@
 package structure;
 
-import evolution.EvolutionStructure;
+import espece.evolution.EvolutionStructure;
 import stucture_base.Element;
 
 public  abstract class Structure extends Element  {

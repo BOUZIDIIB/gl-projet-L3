@@ -1,6 +1,6 @@
 package acteur;
 
-import notion.EtatSante;
+import notion.Mortel.EtatSante;
 import stucture_base.Element;
 import travail.Planning;
 

@@ -1,11 +1,11 @@
-package faune;
+package espece.faune;
 
 import java.util.Date;
 
 import espece.EtreVivant;
 import espece.Milieu;
-import evolution.EvolutionAnimal;
-import notion.EtatSante;
+import espece.MortException;
+import espece.evolution.EvolutionAnimal;
 import structure.Structure;
 
 
@@ -22,7 +22,7 @@ public class Animal extends EtreVivant{
 	
 	public Animal( int ligne_init, int colonne_init, Milieu milieu, int dureeVie, float prixAchat, EtatSante etatSante, Date naissance, float poids, String nom, 
 			Alimentation alimentation, String sexe, Structure habitat, EvolutionAnimal evolution) {
-		super(1, ligne_init, colonne_init, milieu, dureeVie, prixAchat,1 , EtatSante.BONNE_SANTE);
+		super(1, ligne_init, colonne_init, milieu, dureeVie, prixAchat,1);
 		this.naissance = naissance;
 		this.poids = poids;
 		this.nom = nom;
@@ -68,16 +68,17 @@ public class Animal extends EtreVivant{
 	}
 
 
-	public EvolutionAnimal getEvolution() {
-		return evolution;
-	}
-
-
 	public void setEvolution(EvolutionAnimal evolution) {
 		this.evolution = evolution;
 	}
+
+
+	@Override
+	public void vieillir() throws MortException{
+		this.evolution = (EvolutionAnimal) evolution.evolue();
+	}
+
 	
-	// calcule d'age par rapport a la date dans le jeu 
 
 	
 }
