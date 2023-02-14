@@ -10,8 +10,8 @@ public abstract class Personne extends Element {
 	private EtatSante etatSante ;
 		
 	
-	public Personne(String nom, Planning planning , int ligne , int colonne  ) {
-		super( false, 1 , ligne , colonne );
+	public Personne(String nom, Planning planning , int ligne , int colonne , String reference  ) {
+		super(reference, false, 1 , ligne , colonne  );
 		this.nom = nom;
 		this.planning = planning;
 		this.etatSante = EtatSante.BONNE_SANTE;

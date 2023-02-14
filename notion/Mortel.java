@@ -1,7 +1,6 @@
 package notion;
 
-import espece.EstDejaEnBonneSanteException;
-import espece.MortException;
+import myExceptions.*;
 
 public interface Mortel {
     public enum EtatSante {

@@ -4,19 +4,20 @@ import java.util.Date;
 
 import espece.Milieu;
 import production.Oeuf;
-import structure.Structure;
+import structure.CagePoisson;
 
 public class Poisson extends AnimalProducteur{
-
-	public Poisson(int ligne_init, int colonne_init, int dureeVie, float prixAchat, Date naissance,
-			float poids, String nom , String sexe, Structure habitat, int frequenceProduction,
-			int quantiteProduction) {
+	private final static int DUREE_VIE = 30 ;
+	private final static int PRIX_ACHAT = 10 ;
+	private final static int FREQUENCE_PRODUCTION = 1 ;
+	private final static float POIDS = 10;
+	private final static int QUANTITE = 10 ;
+	
+	public Poisson(int ligne_init, int colonne_init, Date naissance, String nom , String sexe, CagePoisson habitat,String reference) {
 		
-		super(ligne_init, colonne_init, Milieu.AQUATIQUE, dureeVie, prixAchat, naissance, poids, nom, Alimentation.CARNIVORE, sexe, habitat,
-				frequenceProduction, quantiteProduction,new Oeuf());
+		super(ligne_init, colonne_init, Milieu.AQUATIQUE, DUREE_VIE, PRIX_ACHAT, naissance, POIDS, nom, Alimentation.CARNIVORE, sexe, habitat,
+				FREQUENCE_PRODUCTION, QUANTITE,new Oeuf() , reference );
 
 	}
 
 }
-
-// habitat == mer 

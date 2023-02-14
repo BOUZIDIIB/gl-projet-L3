@@ -1,6 +1,6 @@
 package espece.evolution;
 
-import espece.MortException;
+import myExceptions.MortException;
 
 public enum EvolutionArbre implements Evolution {
 	ARBUSTE, 

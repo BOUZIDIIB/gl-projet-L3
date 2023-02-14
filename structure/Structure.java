@@ -10,13 +10,14 @@ public  abstract class Structure extends Element  {
 	private EvolutionStructure etat ;
 	private Charge[] charges ;
 	
+	private final static int  NB_CASE = 9 ;
 	
-	public Structure( int ligne_init, int colonne_init, float prixAchat,
-			boolean accessible, EvolutionStructure etat) {
-		super(false,9, ligne_init, colonne_init);
+	// accessible ?? utilité 
+	public Structure( int ligne_init, int colonne_init, float prixAchat , String reference ) {
+		super(reference ,false,NB_CASE, ligne_init, colonne_init);
 		this.prixAchat = prixAchat;
-		this.accessible = accessible;
-		this.etat = etat;
+		this.accessible = false ;
+		this.etat = EvolutionStructure.ETAT_INITIAL;
 		charges = new Charge[2];
 	}
 

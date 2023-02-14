@@ -1,6 +1,6 @@
 package espece.evolution;
 
-import espece.MortException;
+import myExceptions.MortException;
 
 public interface Evolution {
     Evolution evolue() throws MortException;

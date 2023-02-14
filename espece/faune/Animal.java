@@ -4,12 +4,13 @@ import java.util.Date;
 
 import espece.EtreVivant;
 import espece.Milieu;
-import espece.MortException;
+
 import espece.evolution.EvolutionAnimal;
+import myExceptions.MortException;
 import structure.Structure;
 
 
-public class Animal extends EtreVivant{
+public abstract class Animal extends EtreVivant{
 
 	private Date naissance ;
 	private float poids ;
@@ -20,16 +21,16 @@ public class Animal extends EtreVivant{
 	private EvolutionAnimal evolution ;
 	
 	
-	public Animal( int ligne_init, int colonne_init, Milieu milieu, int dureeVie, float prixAchat, EtatSante etatSante, Date naissance, float poids, String nom, 
-			Alimentation alimentation, String sexe, Structure habitat, EvolutionAnimal evolution) {
-		super(1, ligne_init, colonne_init, milieu, dureeVie, prixAchat,1);
+	public Animal( int ligne_init, int colonne_init, Milieu milieu, int dureeVie, float prixAchat , Date naissance, float poids, String nom, 
+			Alimentation alimentation, String sexe, Structure habitat, String reference) {
+		super(1, ligne_init, colonne_init, milieu, dureeVie, prixAchat,1 , reference );
 		this.naissance = naissance;
 		this.poids = poids;
 		this.nom = nom;
 		this.alimentation = alimentation;
 		this.sexe = sexe;
 		this.habitat = habitat;
-		this.evolution = evolution;
+		this.evolution = EvolutionAnimal.JEUNE;
 	}
 
 

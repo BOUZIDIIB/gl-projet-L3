@@ -1,9 +1,11 @@
-package espece;
+package myExceptions;
 
 import notion.Mortel;
 
 public class MortException extends Exception{
-    public MortException(Mortel mort){
+   
+	private static final long serialVersionUID = 1L;
+	public MortException(Mortel mort){
         super(mort + "\nEST MORT!");
     }
     public MortException() {

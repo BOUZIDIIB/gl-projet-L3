@@ -3,13 +3,17 @@ package espece.faune;
 import java.util.Date;
 
 import espece.Milieu;
-import structure.Structure;
+import structure.Maison;
 
 public class Chat extends AnimalCompagnie{
 
-	public Chat(int ligne_init, int colonne_init, Milieu milieu, int dureeVie, float prixAchat, Date naissance,
-			float poids, String nom, String sexe, Structure habitat) {
-		super(ligne_init, colonne_init, milieu, dureeVie, prixAchat, naissance, poids, nom, Alimentation.CARNIVORE, sexe, habitat);
+	
+	private final static int DUREE_VIE = 500 ;
+	private final static int PRIX_ACHAT = 100 ;
+	private final static float POIDS = 50 ;	
+	
+	public Chat(int ligne_init, int colonne_init, Milieu milieu,  Date naissance,String nom, Maison habitat , String sexe, String reference ) {
+		super(ligne_init, colonne_init, milieu, DUREE_VIE, PRIX_ACHAT, naissance, POIDS, nom, Alimentation.CARNIVORE, sexe, habitat ,reference );
 
 	}
 

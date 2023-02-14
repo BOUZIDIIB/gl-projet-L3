@@ -1,5 +1,7 @@
 package espece;
 
+import myExceptions.EstDejaEnBonneSanteException;
+import myExceptions.MortException;
 import notion.Mortel;
 import stucture_base.Element;
 
@@ -12,8 +14,8 @@ public abstract class EtreVivant extends Element implements Mortel{
 	
 
 	public EtreVivant( int nbCase, int ligne_init, int colonne_init, Milieu milieu, int dureeVie,
-			float prixAchat, float niveauEau) {
-		super(true, nbCase, ligne_init, colonne_init);
+			float prixAchat, float niveauEau , String reference) {
+		super(reference ,true, nbCase, ligne_init, colonne_init );
 		this.milieu = milieu;
 		this.dureeVie = dureeVie;
 		this.prixAchat = prixAchat;

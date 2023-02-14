@@ -4,15 +4,20 @@ import java.util.Date;
 
 import espece.Milieu;
 import production.Oeuf;
-import structure.Structure;
+import structure.RefureCanardLune;
 
 public class CanardLune extends AnimalProducteur {
+	
+	private final static int DUREE_VIE = 100 ;
+	private final static int PRIX_ACHAT = 500 ;
+	private final static int FREQUENCE_PRODUCTION = 50 ;
+	private final static float POIDS = 50 ;
+	private final static int QUANTITE = 10 ;
 
-	public CanardLune(int ligne_init, int colonne_init, int dureeVie, float prixAchat, Date naissance,
-			float poids, String nom, String sexe, Structure habitat, int frequenceProduction,
-			int quantiteProduction) {
-		super(ligne_init, colonne_init, Milieu.ESPACE, dureeVie, prixAchat, naissance, poids, nom, Alimentation.OMNIVRE, sexe, habitat,
-				frequenceProduction, quantiteProduction, new Oeuf());
+	// l'habitat d'un canard est fixe pour tout les canards ==> constante 
+	public CanardLune(int ligne_init, int colonne_init, Date naissance,String nom, String sexe, RefureCanardLune habitat,String reference ) {
+		super(ligne_init, colonne_init, Milieu.ESPACE, DUREE_VIE, PRIX_ACHAT, naissance, POIDS, nom, Alimentation.OMNIVRE, sexe, habitat,
+				FREQUENCE_PRODUCTION, QUANTITE, new Oeuf() ,reference );
 
 	}
 

@@ -46,7 +46,9 @@ public class Position {
 	
 	public void setTabCase(int new_ligne ,int  new_colonne) {
 	
-		tabCase = new Case[(int) Math.sqrt(NB_CASE_MAX)][(int) Math.sqrt(NB_CASE_MAX)];
+		tabCase = new Case[nbLigne][nbColonne];
+		colonne_init = new_colonne ;
+		ligne_init = new_ligne ;
 		for(int indexligne =0 ;indexligne < nbLigne ;indexligne++) {
 			for(int indexColone=0 ; indexColone < nbColonne; indexColone++ ) {
 				tabCase[indexligne][indexColone]= new Case(false , new_ligne +indexligne , new_colonne+indexColone);
@@ -68,6 +70,17 @@ public class Position {
 	public int getColonne_init() {
 		return colonne_init;
 	}
+	
+	
+
+	public int getNbColonne() {
+		return nbColonne;
+	}
+
+
+	public int getNbLigne() {
+		return nbLigne;
+	}
 
 	@Override
 	public String toString() {
@@ -80,5 +93,17 @@ public class Position {
 		return res;
 	}
 	
+	public boolean contains(Case block ) {
+		for(int indexligne =0 ;indexligne < nbLigne ;indexligne++) {
+			for(int indexColone=0 ; indexColone < nbColonne; indexColone++ ) {
+				Case tabcase = tabCase[indexligne][indexColone];
+				if(tabcase.equals(block)) {
+					return true ;
+				}
+			}
+		}
+		
+		return false ;
+	}
 	
 }

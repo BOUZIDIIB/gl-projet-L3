@@ -8,8 +8,6 @@ package generateur.map;
  */
 public class Case {
 	
-	
-	public final static int DIMENSION = 20;
 	private boolean libre = true;
 	private int ligne ;
 	private int colonne;
@@ -46,6 +44,14 @@ public class Case {
 	@Override
 	public String toString() {
 		return "Case [libre=" + libre + ", ligne=" + ligne + ", colonne=" + colonne + "]";
+	}
+	
+	public boolean equals(Object o ) {
+		if( o instanceof Case) {
+			Case c = (Case)o ;
+			return c.getColonne() == colonne && c.getLigne() == ligne ;
+		}
+		return false ;
 	}
 	
 	

@@ -1,20 +1,30 @@
 package stucture_base;
 
 
-public  class Element {
+public  abstract class Element {
 	private boolean statique;
 	private Position position ;
 	private int nbCase ;
 	
+	/**
+	 * la reference d'un objet une fois instancier est unique 
+	 */
+	private String reference;
 	
 	
-	public Element(boolean statique, int nbCase , int ligne_init , int colonne_init) {
+	
+	public Element(String reference ,boolean statique, int nbCase , int ligne_init , int colonne_init) {
 		this.statique = statique;
 		this.nbCase=nbCase;
 		position = new Position(nbCase , ligne_init , colonne_init );
+		this.reference = reference  ;
 		
 	}
 	
+	// le nom d'un element est unique pour pouvoir etre referencé dans la 
+	public String getReference() {
+		return reference ;
+	}
 	
 	public int getNbCase() {
 		return nbCase;
@@ -31,7 +41,12 @@ public  class Element {
 	}
 
  	
-	
+	public Position getPosition() {
+		return position ;
+	}
+	public void setPosition(int new_ligne , int new_colonne) {
+		position.setTabCase(new_ligne, new_colonne);
+	}
 	
 	@Override
 	public String toString() {
@@ -39,10 +54,5 @@ public  class Element {
 		return " :[ statistique = "+statique+" nbCase = "+nbCase+ "position = "+position ;
 	}
 
-	public static void main(String[]args) {
-		Element el = new Element(true,9,0,0);
-		System.out.println(el);
 		
-	}
-	
 }
