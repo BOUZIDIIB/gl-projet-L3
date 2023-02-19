@@ -6,8 +6,18 @@ public class Map {
 	private int nbLignes ;
 	private int nbColones ;
 	
-	public Map( int nbLignes, int nbColones) {
+	// parametrer pour quelle soit à la coordonnée x=0 et y=0 de l'ecrant
+	private Case case_inital ;
+	private int x ; 
+	private int y ;
 	
+	public Map( int nbLignes, int nbColones , int x , int y ) {
+	
+		// modification 
+		this.x = x;
+		this.y = y ;
+		
+		//		
 		this.nbLignes = nbLignes;
 		this.nbColones = nbColones;
 		
@@ -17,7 +27,39 @@ public class Map {
 				cases[indexLigne][indexColonne]= new Case(true ,indexLigne , indexColonne);
 			}
 		}
+		case_inital = cases[0][0]; 
 	}
+	
+
+	public Case getCase_inital() {
+		return case_inital;
+	}
+
+
+	public void setCase_inital(Case case_inital) {
+		this.case_inital = case_inital;
+	}
+
+
+	public int getX() {
+		return x;
+	}
+
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+
+	public int getY() {
+		return y;
+	}
+
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
 
 	public Case[][] getCases() {
 		return cases;

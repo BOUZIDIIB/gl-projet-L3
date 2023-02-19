@@ -3,6 +3,7 @@ package espece.faune;
 import java.util.Date;
 
 import espece.Milieu;
+import generateur.map.Map;
 import production.Produit;
 import structure.Structure;
 
@@ -15,9 +16,9 @@ public abstract class AnimalProducteur extends Animal{
 	
 	public AnimalProducteur(int ligne_init, int colonne_init, Milieu milieu, int dureeVie, float prixAchat, Date naissance, float poids, String nom, Alimentation alimentation, String sexe,
 			Structure habitat, int frequenceProduction, int quantiteProduction,
-			Produit produit , String reference ) {
+			Produit produit , String reference , Map map ) {
 		super(ligne_init, colonne_init, milieu, dureeVie, prixAchat, naissance, poids, nom, alimentation,
-				sexe, habitat ,reference );
+				sexe, habitat ,reference ,map);
 		this.frequenceProduction = frequenceProduction;
 		this.quantiteProduction = quantiteProduction;
 		this.produit = produit;
@@ -47,6 +48,8 @@ public abstract class AnimalProducteur extends Animal{
 	public Produit getProduit() {
 		return produit;
 	}
+	
+	
 
 
 	

@@ -1,6 +1,7 @@
 package structure;
 
 import espece.evolution.EvolutionStructure;
+import generateur.map.Map;
 import stucture_base.Element;
 
 public  abstract class Structure extends Element  {
@@ -13,8 +14,8 @@ public  abstract class Structure extends Element  {
 	private final static int  NB_CASE = 9 ;
 	
 	// accessible ?? utilité 
-	public Structure( int ligne_init, int colonne_init, float prixAchat , String reference ) {
-		super(reference ,false,NB_CASE, ligne_init, colonne_init);
+	public Structure( int ligne_init, int colonne_init, float prixAchat , String reference , Map map  ) {
+		super(reference ,false,NB_CASE, ligne_init, colonne_init , map);
 		this.prixAchat = prixAchat;
 		this.accessible = false ;
 		this.etat = EvolutionStructure.ETAT_INITIAL;

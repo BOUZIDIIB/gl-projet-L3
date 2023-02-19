@@ -1,21 +1,24 @@
 package espece;
 
+import generateur.map.Map;
 import myExceptions.EstDejaEnBonneSanteException;
 import myExceptions.MortException;
 import notion.Mortel;
+import process.transaction.Buyable;
+import process.transaction.Saleable;
 import stucture_base.Element;
 
-public abstract class EtreVivant extends Element implements Mortel{
+public abstract class EtreVivant extends Element implements Mortel,Saleable,Buyable{
 	private Milieu milieu ;
 	private int dureeVie;
-	private float prixAchat ;
+	private float prixAchat ,prixVente;
 	private float niveauEau;
 	private EtatSante etatSante;
 	
 
 	public EtreVivant( int nbCase, int ligne_init, int colonne_init, Milieu milieu, int dureeVie,
-			float prixAchat, float niveauEau , String reference) {
-		super(reference ,true, nbCase, ligne_init, colonne_init );
+			float prixAchat, float niveauEau , String reference , Map map) {
+		super(reference ,true, nbCase, ligne_init, colonne_init , map );
 		this.milieu = milieu;
 		this.dureeVie = dureeVie;
 		this.prixAchat = prixAchat;
@@ -31,15 +34,6 @@ public abstract class EtreVivant extends Element implements Mortel{
 
 	public int getDureeVie() {
 		return dureeVie;
-	}
-
-	public float getPrixAchat() {
-		return prixAchat;
-	}
-
-
-	public void setPrixAchat(float prixAchat) {
-		this.prixAchat = prixAchat;
 	}
 
 
@@ -94,6 +88,16 @@ public abstract class EtreVivant extends Element implements Mortel{
 			default:
 				etatSante = EtatSante.BONNE_SANTE;
 		}
+	}
+    
+    @Override
+	public float getPrixAchat() {
+		return prixAchat;
+	}
+	
+	@Override
+	public float getPrixVente() {
+		return prixVente;
 	}
 
 

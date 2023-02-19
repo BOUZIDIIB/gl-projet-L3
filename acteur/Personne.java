@@ -1,5 +1,6 @@
 package acteur;
 
+import generateur.map.Map;
 import notion.Mortel.EtatSante;
 import stucture_base.Element;
 import travail.Planning;
@@ -10,8 +11,8 @@ public abstract class Personne extends Element {
 	private EtatSante etatSante ;
 		
 	
-	public Personne(String nom, Planning planning , int ligne , int colonne , String reference  ) {
-		super(reference, false, 1 , ligne , colonne  );
+	public Personne(String nom, Planning planning , int ligne , int colonne , String reference , Map map ) {
+		super(reference, false, 1 , ligne , colonne , map  );
 		this.nom = nom;
 		this.planning = planning;
 		this.etatSante = EtatSante.BONNE_SANTE;

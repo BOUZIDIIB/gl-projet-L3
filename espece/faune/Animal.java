@@ -6,11 +6,15 @@ import espece.EtreVivant;
 import espece.Milieu;
 
 import espece.evolution.EvolutionAnimal;
+import generateur.map.Map;
+import gestion.Stockage;
 import myExceptions.MortException;
+import notion.Mortel;
+import process.visitor.GestionVisitor;
 import structure.Structure;
 
 
-public abstract class Animal extends EtreVivant{
+public abstract class Animal extends EtreVivant implements Mortel,Stockage{
 
 	private Date naissance ;
 	private float poids ;
@@ -22,8 +26,8 @@ public abstract class Animal extends EtreVivant{
 	
 	
 	public Animal( int ligne_init, int colonne_init, Milieu milieu, int dureeVie, float prixAchat , Date naissance, float poids, String nom, 
-			Alimentation alimentation, String sexe, Structure habitat, String reference) {
-		super(1, ligne_init, colonne_init, milieu, dureeVie, prixAchat,1 , reference );
+			Alimentation alimentation, String sexe, Structure habitat, String reference , Map map ) {
+		super(1, ligne_init, colonne_init, milieu, dureeVie, prixAchat,1 , reference , map );
 		this.naissance = naissance;
 		this.poids = poids;
 		this.nom = nom;
@@ -79,7 +83,13 @@ public abstract class Animal extends EtreVivant{
 		this.evolution = (EvolutionAnimal) evolution.evolue();
 	}
 
-	
+
+	@Override
+	public <T> T accept(GestionVisitor<T> visitor) {
+		visitor.visit(this);
+		return null;
+	}
+
 
 	
 }

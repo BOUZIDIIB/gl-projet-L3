@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 import java.util.NoSuchElementException;
 
+import configuration.GameConfiguration;
 import generateur.map.Case;
 import generateur.map.Map;
-import myExceptions.AucunElementSelectionne;
 import myExceptions.BlockNotFreeException;
 import stucture_base.Element;
 import stucture_base.Position;
@@ -36,6 +36,7 @@ public class MapManager {
 		Position position = element.getPosition();
 		// condition d'insertion (les cases voulues sont vide )
 		Case[][] cases = position.getTabCase();
+	
 		for(int indexLignePosition = 0 ; indexLignePosition< position.getNbLigne() ; indexLignePosition ++) {
 			for(int indexColonnePosition = 0 ; indexColonnePosition < position.getNbColonne() ; indexColonnePosition ++) {
 				Case el = cases[indexLignePosition][indexColonnePosition];
@@ -57,8 +58,7 @@ public class MapManager {
 		for(int indexLignePosition = 0 ; indexLignePosition< element.getPosition().getNbLigne() ; indexLignePosition ++) {
 			for(int indexColonnePosition = 0 ; indexColonnePosition < element.getPosition().getNbColonne() ; indexColonnePosition ++) {
 				Case el = cases[indexLignePosition][indexColonnePosition];
-				map.getCase(el.getLigne(), el.getColonne()).setLibre(false);
-					
+				map.getCase(el.getLigne(), el.getColonne()).setLibre(false);				
 			}
 		}
 	}
@@ -70,18 +70,39 @@ public class MapManager {
 	 */
 	public void moveElement(Element element , Case new_case ) {
 		try {
-			Case nv = map.getCase(new_case.getLigne(), new_case.getColonne());
-			if(nv.isLibre()) {
-				Element el = get(element.getReference());
-				composants.remove(el.getReference());
+		
+			Element el = get(element.getReference());
+			el.freePosition();
+			
+			if(verificationLiberte(element, new_case)) {
+				
 				el.setPosition(new_case.getLigne(), new_case.getColonne());	
-				composants.put(el.getReference(), el);
+				
+			}
+			else {
+				reserve(element);
 			}
 		}catch(NoSuchElementException e){
 			System.err.println(e.getMessage());	
 		}			
 	}
 	
+	
+	public boolean verificationLiberte(Element element , Case init) {
+		
+		int lignes = element.getPosition().getNbLigne();
+		int colonnes = element.getPosition().getNbColonne();
+		
+		for(int indexl = init.getLigne() ; indexl < init.getLigne() + lignes ; indexl ++) {
+			for(int indexc = init.getColonne() ; indexc <  init.getColonne() + colonnes ; indexc ++) {
+				if(!map.getCase(indexl, indexc).isLibre()) {
+					return false ;
+				}
+			}
+		}
+		
+		return true ;	
+	}
 
 	/**
 	 * recuperer un element dans la map (il faut verfier que equals est bien redefini dans la classe de l'element )
@@ -104,12 +125,30 @@ public class MapManager {
 		return composants;
 	}
 
-	public Element getElement(Case block) throws AucunElementSelectionne {
+	public Element getElement(Case block) {
 		for(Element element : composants.values()) {
 			if(element.getPosition().contains(block)) {
 				return element ;
 			}
 		}
-		throw new AucunElementSelectionne();
+		return null ;
 	}
+	
+	public void movingMap(int dx , int dy ) {
+		int xmap = map.getX();
+		
+		if(xmap +dx <= 0) {
+			map.setX(xmap + decalage(dx));
+		}
+		int ymap = map.getY();
+		if(ymap +dy <=0) {
+			map.setY(ymap + decalage(dy) );			
+		}
+		
+	}
+	
+	public int decalage(int dx) {
+		return dx - dx%GameConfiguration.CASE_DIMENSION;
+	}
+	
 }

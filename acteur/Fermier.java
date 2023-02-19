@@ -3,6 +3,7 @@ package acteur;
 import java.awt.Image;
 import java.util.Date;
 
+import generateur.map.Map;
 import travail.Planning;
 
 public class Fermier extends Personne{
@@ -10,8 +11,8 @@ public class Fermier extends Personne{
 
 	private Date dateNaissance ;
 	
-	public Fermier(String nom, Planning planning, int ligne, int colonne , Date dateNaissance ,String reference ) {
-		super(nom, planning, ligne, colonne , reference);
+	public Fermier(String nom, Planning planning, int ligne, int colonne , Date dateNaissance ,String reference , Map map ) {
+		super(nom, planning, ligne, colonne , reference , map);
 		this.dateNaissance=dateNaissance;
 	}
 

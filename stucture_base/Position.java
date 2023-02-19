@@ -2,6 +2,7 @@ package stucture_base;
 
 
 import generateur.map.Case;
+import generateur.map.Map;
 
 /**
  * cette classe est responsable de la creation et du regroupement des case d'un element dans un tableau a 2 dimension 
@@ -20,9 +21,12 @@ public class Position {
 	private int colonne_init;
 	private int nbColonne ;
 	private int nbLigne ;
+	private Map map ;
 	
 	
-	public Position(int nbCase , int ligne_init , int colonne_init) {
+	public Position(int nbCase , int ligne_init , int colonne_init , Map map) {
+		
+		this.map = map;
 		this.nbCase = nbCase;
 		this.ligne_init = ligne_init;
 		this.colonne_init = colonne_init;
@@ -32,13 +36,17 @@ public class Position {
 		 nbLigne = nbColonne;
 		
 		tabCase = new Case[(int) Math.sqrt(NB_CASE_MAX)][(int) Math.sqrt(NB_CASE_MAX)];
+		
 		for(int indexligne =0 ;indexligne < nbLigne ;indexligne++) {
 			for(int indexColone=0 ; indexColone < nbColonne; indexColone++ ) {
-				tabCase[indexligne][indexColone]= new Case(false , ligne_init +indexligne , colonne_init+indexColone);
+				
+				tabCase[indexligne][indexColone]= map.getCase(ligne_init + indexligne , colonne_init + indexColone);
+					
 			}
 		}
 	}
 
+	
 	public Case[][] getTabCase() {
 		return tabCase;
 	}
@@ -46,12 +54,20 @@ public class Position {
 	
 	public void setTabCase(int new_ligne ,int  new_colonne) {
 	
-		tabCase = new Case[nbLigne][nbColonne];
+		int dligne = new_ligne - ligne_init ; 
+		int dcolonne = new_colonne - colonne_init ;
 		colonne_init = new_colonne ;
 		ligne_init = new_ligne ;
+		
 		for(int indexligne =0 ;indexligne < nbLigne ;indexligne++) {
 			for(int indexColone=0 ; indexColone < nbColonne; indexColone++ ) {
-				tabCase[indexligne][indexColone]= new Case(false , new_ligne +indexligne , new_colonne+indexColone);
+				
+				Case block = tabCase[indexligne][indexColone];
+				
+				tabCase[indexligne][indexColone]= map.getCase(block.getLigne() + dligne, block.getColonne()+ dcolonne);
+			
+				map.getCase(block.getLigne() +dligne , block.getColonne()+dcolonne).setLibre(false);
+				
 			}
 		}
 	}

@@ -2,14 +2,15 @@ package structure;
 
 import java.util.ArrayList;
 
+import generateur.map.Map;
 import travail.Tache;
 
 public  abstract class StructureAction extends Structure{
 	
 	private ArrayList<Tache> taches ;
 
-	public StructureAction(int ligne_init, int colonne_init, float prixAchat , String reference ) {
-		super(ligne_init, colonne_init, prixAchat , reference);
+	public StructureAction(int ligne_init, int colonne_init, float prixAchat , String reference , Map map) {
+		super(ligne_init, colonne_init, prixAchat , reference , map);
 		this.taches =  new ArrayList<>();;
 	}
 

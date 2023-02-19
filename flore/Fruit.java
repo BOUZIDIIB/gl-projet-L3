@@ -1,6 +1,7 @@
 package flore;
 
 import espece.Milieu;
+import generateur.map.Map;
 
 
 /**
@@ -11,8 +12,8 @@ import espece.Milieu;
 public class Fruit extends Plante{
 
 	public Fruit(int nbCase, int ligne_init, int colonne_init, Milieu milieu, int dureeVie, float prixAchat,
-			float niveauEau, Engrais engrais , String reference ) {
-		super(nbCase, ligne_init, colonne_init, milieu, dureeVie, prixAchat, reference);
+			float niveauEau, Engrais engrais , String reference , Map map) {
+		super(nbCase, ligne_init, colonne_init, milieu, dureeVie, prixAchat, reference , map);
 	}
 
 }

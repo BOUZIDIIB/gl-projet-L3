@@ -2,11 +2,13 @@ package generateur.game;
 
 import java.util.Date;
 
+
 import acteur.Fermier;
 import configuration.GameConfiguration;
 import generateur.map.Map;
 import structure.Etable;
 import structure.Maison;
+
 import travail.Planning;
 
 
@@ -18,7 +20,7 @@ public class GameBuilder {
 	 * @return
 	 */
 	public static MapManager MapBuilder() {
-		Map map = new Map(GameConfiguration.NB_LIGNE , GameConfiguration.NB_COLONNE);
+		Map map = new Map(GameConfiguration.NB_LIGNE , GameConfiguration.NB_COLONNE , GameConfiguration.X_MAP, GameConfiguration.Y_MAP);
 		MapManager manager = new MapManager(map);
 		return manager ;
 	}
@@ -34,25 +36,25 @@ public class GameBuilder {
 	
 
 	/**
-	 * positionner des elements dans des endroits fixe pour le test 
+	 * positionner des elements initiaux dans des endroits fixe pour le test 
 	 * @param manager
 	 */
 	private static void initialize(ElementManager manager ) {
 		Planning planning = new Planning();
 		
-		Fermier fermier = new Fermier ("albert", planning, 10, 10, new Date(20), "fermier");
-		manager.add(fermier);
 		
-		Etable etable = new Etable(5, 5,"etable");
-		manager.add(etable);
-		
-		Maison grange = new Maison(1, 1,"grange");
-		manager.add(grange);
-		
-		
-		
+		  Fermier fermier = new Fermier ("albert", planning, 12, 10, new Date(20),"fermier" , manager.getMapManager().getMap());
+		  manager.add(fermier);
+		  
+		  
+		  Etable etable = new Etable(15, 15,"etable" , manager.getMapManager().getMap());
+		  manager.add(etable);
+		  
+		  Maison grange = new Maison(20, 20,"grange" , manager.getMapManager().getMap());
+		  manager.add(grange);
+		 
+		 
 	}
-	
 	
 
 }

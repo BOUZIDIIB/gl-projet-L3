@@ -1,4 +1,4 @@
-package gui_test;
+package gui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,6 +10,7 @@ public class KeyControls implements KeyListener {
 
 	private ElementManager manager ;
 	private Element selected ;
+	
 	public KeyControls(ElementManager manager , Element selected ) {
 		this.manager=manager;
 		this.selected = selected;
@@ -22,26 +23,25 @@ public class KeyControls implements KeyListener {
 			switch(code) {
 			case 'z':
 				// ajouter un gestionnaire de mouvement des element dans le element manager 
-				//manager.getMapManager().moveElement(selected, );
-				manager.moveFarmerUp();
+				manager.moveUp(selected);
 				
 				break;
 			
 			case 's':
-				manager.moveFarmerDown();
+				manager.moveDown(selected);
 				
 				break;
 				
 			case 'q':
-				manager.moveFarmerLeft();
+				manager.moveLeft(selected);
 				break;
 		
 			case 'd':
-				manager.moveFarmerRight();
+				manager.moveRight(selected);
 				break;
 			
 			default:
-				System.out.println("aucune correspondance avec le clavier");
+				
 				break;
 				
 			}
@@ -58,6 +58,17 @@ public class KeyControls implements KeyListener {
 		public void keyReleased(KeyEvent e) {
 			//manager.stop(e.getKeyCode());		
 		}
+
+
+		public Element getSelected() {
+			return selected;
+		}
+
+
+		public void setSelected(Element selected) {
+			this.selected = selected;
+		}
+		
 		
 	
 

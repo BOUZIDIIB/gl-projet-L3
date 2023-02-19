@@ -3,6 +3,7 @@ package acteur;
 import java.util.ArrayList;
 
 import espece.EtreVivant;
+import generateur.map.Map;
 import stucture_base.Element;
 
 public class Predateur extends Element{
@@ -10,8 +11,8 @@ public class Predateur extends Element{
 	private ArrayList<EtreVivant> proies ;
 	private ModeDefense modeDefense ;
 
-	public Predateur(  int ligne_init, int colonne_init , ModeDefense mode , ArrayList<EtreVivant> proies , String reference) {
-		super( reference ,false, 1, ligne_init, colonne_init );
+	public Predateur(  int ligne_init, int colonne_init , ModeDefense mode , ArrayList<EtreVivant> proies , String reference , Map map) {
+		super( reference ,false, 1, ligne_init, colonne_init ,map);
 		this.proies = proies;
 		modeDefense=mode;	
 		

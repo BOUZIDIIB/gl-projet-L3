@@ -3,7 +3,9 @@ package production;
 public abstract  class Produit {
 	
 	private float prixVente ;
+	private String reference;
 	
+
 
 	public Produit(float prixVente) {
 		this.prixVente=prixVente;
@@ -15,5 +17,12 @@ public abstract  class Produit {
 	
 	public void setPrixVente(float prixVente) {
 		this.prixVente = prixVente;
+	}
+	public String getReference() {
+		return reference;
+	}
+	
+	public void setReference(String reference) {
+		this.reference = reference;
 	}
 }
