@@ -2,12 +2,13 @@ package process.transaction;
 
 import java.util.HashMap;
 
-import espece.faune.Animal;
-import flore.Culture;
-import materiel.Engin;
-import materiel.Outil;
-import production.Produit;
-import structure.Structure;
+import data.espece.faune.Animal;
+import data.materiel.Engin;
+import data.materiel.Outil;
+import data.production.Produit;
+import data.structure.Structure;
+import data.flore.Culture;
+
 
 public class Market {
 	

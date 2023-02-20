@@ -1,6 +1,6 @@
 package process.transaction;
 
-import finance.Finance;
+import data.finance.Finance;
 
 public abstract class Transaction implements Finance{
 	

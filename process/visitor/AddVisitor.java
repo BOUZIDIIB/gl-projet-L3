@@ -1,18 +1,16 @@
 package process.visitor;
 
-import acteur.Employee;
-import  espece.faune.Animal;
-import  flore.Culture;
-
-import  gestion.GestionnaireMateriel;
-import  gestion.GestionnaireRH;
-import  gestion.GestionnaireStocks;
-import  gestion.GestionnaireStructures;
-import  materiel.Engin;
-import  materiel.Outil;
-import  production.Produit;
-import  structure.Structure;
-       
+import data.acteur.Employee;
+import data.espece.faune.Animal;
+import data.flore.Culture;
+import data.gestion.GestionnaireMateriel;
+import data.gestion.GestionnaireRH;
+import data.gestion.GestionnaireStocks;
+import data.gestion.GestionnaireStructures;
+import data.materiel.Engin;
+import data.materiel.Outil;
+import data.production.Produit;
+import data.structure.Structure;
 
 public class AddVisitor implements GestionVisitor<Void>{
 

@@ -1,13 +1,12 @@
 package process.visitor;
 
-import acteur.Employee;
-
-import espece.faune.Animal;
-import flore.Culture;
-import materiel.Engin;
-import materiel.Outil;
-import production.Produit;
-import structure.Structure;
+import data.acteur.Employee;
+import data.espece.faune.Animal;
+import data.flore.Culture;
+import data.materiel.Engin;
+import data.materiel.Outil;
+import data.production.Produit;
+import data.structure.Structure;
 
 
 public interface GestionVisitor<T> {

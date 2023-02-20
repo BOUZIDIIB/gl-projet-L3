@@ -2,8 +2,10 @@ package process.transaction;
 
 import java.util.HashMap;
 
-import finance.Penalites;
-import generateur.game.Game;
+import data.finance.Penalites;
+import process.game.Game;
+
+
 
 public class GestionCharges {
 	private HashMap<String, Penalites> transactions = new HashMap<>();

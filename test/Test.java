@@ -1,6 +1,6 @@
 package test;
 
-import gui.MainGuiTest;
+import gui.Farm.MainGuiTest;
 
 public class Test {
 	

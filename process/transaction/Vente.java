@@ -2,8 +2,8 @@ package process.transaction;
 
 import java.util.HashMap;
 
-import generateur.game.Game;
-import gestion.GestionnaireFinancier;
+import data.gestion.GestionnaireFinancier;
+import process.game.Game;
 import process.visitor.RemoveVisitor;
 
 public class Vente extends Transaction {

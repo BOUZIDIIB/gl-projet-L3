@@ -13,8 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import generateur.game.Game;
-import gestion.RessourcesManager;
+import data.gestion.RessourcesManager;
+import process.game.Game;
+import process.game.GameBuilder;
+import process.game.MapManager;
 import process.transaction.Achat;
 
 public class Gestionnaire extends JFrame {
@@ -28,7 +30,7 @@ public class Gestionnaire extends JFrame {
 	public static Color RED = new Color(158,36,19);
 	public static Color MEDIUM_GREEN = new Color(103,148,76);
 	
-	private PaintStrategy paintStrategy = new PaintStrategy();
+	private GestionnairePaintStrategy paintStrategy = new GestionnairePaintStrategy();
 	private HashMap<String, JPanel> toBuy = new HashMap<>();
 	
 	private RessourcesManager ressourcesManager = new RessourcesManager();
@@ -108,8 +110,10 @@ public class Gestionnaire extends JFrame {
 	}
 	
 	public static void main(String[] args) {
+		
 		Game game = new Game();
-		game.acheter();
+		MapManager manager = GameBuilder.MapBuilder();
+		game.acheter(manager.getMap());
 		Gestionnaire.achat = game.getAchat();
 		
 		Gestionnaire gestionnaire = new Gestionnaire("Gestionnaire");

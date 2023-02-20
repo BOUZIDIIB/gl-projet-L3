@@ -2,10 +2,10 @@ package process.transaction;
 
 import java.util.HashMap;
 
-import espece.faune.Animal;
-import generateur.game.Game;
-import gestion.GestionnaireFinancier;
+import data.gestion.GestionnaireFinancier;
+import process.game.Game;
 import process.visitor.AddVisitor;
+
 
 public class Achat extends Transaction{
 	private HashMap<String, Buyable> cart = new HashMap<>();
@@ -15,9 +15,9 @@ public class Achat extends Transaction{
 		return cart;
 	}
 
-	public void addToCart(Animal vache) {
-		cart.put(vache.getReference(), vache);
-		setTotalCost(getTotalCost() + vache.getPrixAchat());
+	public void addToCart(Buyable element) {
+		cart.put(element.getReference(), element);
+		setTotalCost(getTotalCost() + element.getPrixAchat());
 	}
 	
 	public void removeFromCart(Buyable element) {
