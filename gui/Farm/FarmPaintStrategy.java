@@ -12,9 +12,6 @@ import data.map.Case;
 import data.map.Map;
 import data.stucture_base.Element;
 import data.stucture_base.Position;
-import process.game.Game;
-
-
 
 
 /**
@@ -74,7 +71,22 @@ public class FarmPaintStrategy {
 			
 		case "poulallier":
 			return new ImageIcon("src"+File.separator+"ressources"+File.separator+"moulin.png");
-				
+			
+		case "ma1":
+			return new ImageIcon("src"+File.separator+"ressources"+File.separator+"tracteur2.png");
+		
+		case "ma0":
+			return new ImageIcon("src"+File.separator+"ressources"+File.separator+"etable.png");
+		
+		case "et0":
+			return new ImageIcon("src"+File.separator+"ressources"+File.separator+"camion.png");
+		
+		case "en0":
+			return new ImageIcon("src"+File.separator+"ressources"+File.separator+"maison.png");
+		
+		case "po0":
+			return new ImageIcon("src"+File.separator+"ressources"+File.separator+"moulin.png");
+			
 		default:
 			return new ImageIcon("src"+File.separator+"ressources"+File.separator+"terre.png");
 		}

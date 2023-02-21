@@ -6,12 +6,15 @@ package gui.Farm;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 import data.configuration.GameConfiguration;
 import data.gestion.GestionnaireStructures;
+import data.map.Case;
 import data.structure.Structure;
 import data.stucture_base.Element;
 import gui.gestionnaire.Gestionnaire;
@@ -24,7 +27,6 @@ public class ChoixPanel extends JLayeredPane {
 	private GestionnaireStructures gestionnaire ;
 	private ElementManager manager ;
 	private Element selected ;
-	
 	public ChoixPanel(GestionnaireStructures gestionnaire , ElementManager manager) {
 		super();
 		this.gestionnaire = gestionnaire;
@@ -41,6 +43,8 @@ public class ChoixPanel extends JLayeredPane {
 				
 		int x = 100 ; 
 		int y = 10;
+		
+		
 		for(Structure structure : gestionnaire.getStructures().values()) {
 			JLabel struct = new JLabel();
 			struct.setBounds(x , y ,100,100);
@@ -80,14 +84,15 @@ public class ChoixPanel extends JLayeredPane {
 			int x = e.getX();
 			if(x>100 && x<200) {
 				selected = gestionnaire.getStructures().get("ma0");
+				
 			}
 			else {
 				if(x>250 && x<350) {
-					selected = gestionnaire.getStructures().get("et0");
+					selected = gestionnaire.getStructures().get("et0");	
 				}
 				else {
 					if(x>400 && x<500) {
-						selected = gestionnaire.getStructures().get("po0");
+						selected = gestionnaire.getStructures().get("po0");	
 					}
 					else {
 						if(x>550 && x< 650) {
@@ -96,11 +101,13 @@ public class ChoixPanel extends JLayeredPane {
 						else {
 							if(x>700) {
 								selected = gestionnaire.getStructures().get("ma1");
+								
 							}
 						}
 					}
 				}
 			}
+			randomPosition();
 			
 		}
 
@@ -128,6 +135,23 @@ public class ChoixPanel extends JLayeredPane {
 			
 		}
 		
+	}
+	
+	public void randomPosition() {
+		Case block = new Case(true , 0 , 0);
+		Boolean libre = false ;
+		while( !libre) {	
+			int ligneAleatoire = 9 + (int)(Math.random() * (20));
+			int colonneAleatoire = 7 + (int)(Math.random() * (20));
+			block = new Case(true, ligneAleatoire, colonneAleatoire);
+		   libre = manager.getMapManager().verificationLiberte(selected, block);
+		}
+		selected.freePosition();
+		if(!manager.getMapManager().getElements().containsKey(selected.getReference())) {
+			manager.add(selected);
+			selected.setPosition(block.getLigne(), block.getColonne());			
+		}
+	
 	}
 	
 	
