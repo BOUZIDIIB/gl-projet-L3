@@ -27,12 +27,14 @@ public class GestionnaireStructures {
 	}
 	
 	public void initializeGestionnaire(Map map ) {
-		Maison maison = new Maison(0, 0, "m0", map);
-		Etable etable = new Etable(0, 0, "eta0", map);
-		Poulallier poulallier = new Poulallier(0, 0, "p0", map);
-		Entrepot entrepot = new Entrepot(0, 0, "entre0", map);
+		Maison maison0 = new Maison(0, 0, "ma0", map);
+		Etable etable = new Etable(0, 0, "et0", map);
+		Poulallier poulallier = new Poulallier(0, 0, "po0", map);
+		Entrepot entrepot = new Entrepot(0, 0, "en0", map);
+		Maison maison1 = new Maison(0, 0, "ma1", map);
 		
-		structures.put(maison.getReference(), maison);
+		structures.put(maison1.getReference(), maison1);
+		structures.put(maison0.getReference(), maison0);
 		structures.put(etable.getReference(), etable);
 		structures.put(poulallier.getReference(), poulallier);
 		structures.put(entrepot.getReference(), entrepot);

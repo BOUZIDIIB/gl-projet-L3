@@ -12,6 +12,7 @@ import data.map.Case;
 import data.map.Map;
 import data.stucture_base.Element;
 import data.stucture_base.Position;
+import process.game.Game;
 
 
 
@@ -93,16 +94,22 @@ public class FarmPaintStrategy {
 		ImageIcon buisson = new ImageIcon("src"+File.separator+"ressources"+File.separator+"buisson.png");
 		for(int i = 7 ; i< dimension +8 ; i ++) {
 			graphics.drawImage(buisson.getImage(), map.getX() + i*GameConfiguration.CASE_DIMENSION , map.getY() + 9*GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION, null);
+			map.getCase(9,i ).setLibre(false);
 		}
 		for(int i = 9 ; i< dimension + 10 ; i ++) {
 			graphics.drawImage(buisson.getImage(), map.getX() + 7*GameConfiguration.CASE_DIMENSION , map.getY() + i*GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION, null);
+			map.getCase(i,7 ).setLibre(false);
 		}
 		
 	  for(int i = 7 ; i< dimension + 8 ; i ++) {
-		  graphics.drawImage(buisson.getImage(), map.getX() +i*GameConfiguration.CASE_DIMENSION , map.getY() + 30*GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION, null); }
+		  graphics.drawImage(buisson.getImage(), map.getX() +i*GameConfiguration.CASE_DIMENSION , map.getY() + 30*GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION, null); 
+		  map.getCase(30,i ).setLibre(false);
+	  }
 	  
 	  for(int i = 9 ; i< dimension +11 ; i ++) { 
-		  graphics.drawImage(buisson.getImage(), map.getX() + 28*GameConfiguration.CASE_DIMENSION , map.getY() +i*GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION, null); }
+		  graphics.drawImage(buisson.getImage(), map.getX() + 28*GameConfiguration.CASE_DIMENSION , map.getY() +i*GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION ,GameConfiguration.CASE_DIMENSION, null); 
+		  map.getCase(i,28 ).setLibre(false);
+	  }
 		 
 	}
 	

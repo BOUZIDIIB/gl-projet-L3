@@ -26,6 +26,7 @@ import process.game.GameBuilder;
 		private int x ;
 		private int y ;
 		
+		
 		public MainGuiTest(String title ) {
 			super(title);
 			init();
@@ -37,12 +38,11 @@ import process.game.GameBuilder;
 			Container contentPane= getContentPane();
 			contentPane.setLayout(null);
 			
-			
 			manager=GameBuilder.buildinElement();
+			
 			selected= manager.getMapManager().get("fermier");	
 				
 			gestionnaire.initializeGestionnaire(manager.getMapManager().getMap());
-			
 			
 			dashboard = new Board(manager , selected ,gestionnaire);
 			
@@ -89,9 +89,8 @@ import process.game.GameBuilder;
 					}
 					else {
 						if(dashboard.mouseIsOnHome(x, y)) {
-							
-							new Gestionnaire("gestionnaire");
-								
+							dispose();
+							new Gestionnaire("gestionnaire");		
 						}
 					}
 				}

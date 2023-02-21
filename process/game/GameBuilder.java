@@ -50,7 +50,7 @@ public class GameBuilder {
 		  Etable etable = new Etable(15, 15,"etable" , manager.getMapManager().getMap());
 		  manager.add(etable);
 		  
-		  Maison grange = new Maison(20, 20,"grange" , manager.getMapManager().getMap());
+		  Maison grange = new Maison(18, 20,"grange" , manager.getMapManager().getMap());
 		  manager.add(grange);
 		 
 		 

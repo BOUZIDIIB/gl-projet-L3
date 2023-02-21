@@ -2,15 +2,13 @@ package gui.Farm;
 
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.KeyListener;
+
 import java.io.File;
 import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
 import data.configuration.GameConfiguration;
 import data.gestion.GestionnaireStructures;
@@ -18,8 +16,6 @@ import process.game.ElementManager;
 
 import process.game.MapManager;
 import data.stucture_base.Element;
-import gui.gestionnaire.Gestionnaire;
-import gui.gestionnaire.GestionnairePaintStrategy;
 
 public class Board  extends JLayeredPane {
 	private JLayeredPane choix;
@@ -90,7 +86,7 @@ public class Board  extends JLayeredPane {
 	}
 	
 	public void addingChoix() {
-		choix = new ChoixPanel(gestionnaire);
+		choix = new ChoixPanel(gestionnaire , manager);
 		
 		add(choix, JLayeredPane.DRAG_LAYER);
 		
