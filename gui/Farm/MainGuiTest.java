@@ -7,7 +7,7 @@
 	import javax.swing.JFrame;
 
 import data.configuration.GameConfiguration;
-import data.structure.Entrepot;
+import data.gestion.GestionnaireStructures;
 import data.stucture_base.Element;
 import gui.gestionnaire.Gestionnaire;
 import process.game.ElementManager;
@@ -20,6 +20,7 @@ import process.game.GameBuilder;
 		private static final long serialVersionUID = 1L;
 		
 		private ElementManager manager ;
+		private GestionnaireStructures gestionnaire = GestionnaireStructures.getInstance() ;
 		private Board dashboard ;
 		private Element selected ;
 		private int x ;
@@ -31,7 +32,6 @@ import process.game.GameBuilder;
 		}
 		
 		
-		
 		public void init() {
 			
 			Container contentPane= getContentPane();
@@ -40,8 +40,12 @@ import process.game.GameBuilder;
 			
 			manager=GameBuilder.buildinElement();
 			selected= manager.getMapManager().get("fermier");	
+				
+			gestionnaire.initializeGestionnaire(manager.getMapManager().getMap());
 			
-			dashboard = new Board(manager , selected );
+			
+			dashboard = new Board(manager , selected ,gestionnaire);
+			
 			contentPane.add(dashboard);
 			
 			dashboard.addMouseListener(new MouseControls());
@@ -50,7 +54,8 @@ import process.game.GameBuilder;
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			pack();
 			setVisible(true);
-			setSize(GameConfiguration.WINDOW_WIDTH , GameConfiguration.WINDOW_HEIGHT);	
+			setSize(GameConfiguration.WINDOW_WIDTH , GameConfiguration.WINDOW_HEIGHT);
+			setResizable(false);
 		}
 	
 		@Override
@@ -79,14 +84,14 @@ import process.game.GameBuilder;
 					selected = element ;
 				}
 				else {
-					if(mouseIsOnAdd(x,y)) {
-						Entrepot entrepot = new Entrepot( 18, 10,"entrepot" , manager.getMapManager().getMap());
-						manager.add(entrepot);
-						
+					if(dashboard.mouseIsOnAdd(x,y)) {
+						dashboard.changeState();	
 					}
 					else {
-						if(mouseIsOnHome(x, y)) {
+						if(dashboard.mouseIsOnHome(x, y)) {
+							
 							new Gestionnaire("gestionnaire");
+								
 						}
 					}
 				}
@@ -123,14 +128,7 @@ import process.game.GameBuilder;
 			
 		}
 		
-	
-		// temporaire avant de ajouter un hud 
-		public Boolean mouseIsOnAdd(int x , int y ) {
-			return (x < (GameConfiguration.X_ADD_LABEL +GameConfiguration.WIDHT_LABEL))&&(x>GameConfiguration.X_ADD_LABEL) &&( y <(GameConfiguration.y_ADD_LABEL+GameConfiguration.HEIGHT_LABEL ))&& (y >GameConfiguration.y_ADD_LABEL);
-		}
-		
-		public Boolean mouseIsOnHome(int x , int y ) {
-			return (x<(GameConfiguration.X_HOME_LABEL +GameConfiguration.WIDHT_LABEL))&&( x>GameConfiguration.X_HOME_LABEL )&& (y <(GameConfiguration.Y_HOME_LABEL+GameConfiguration.HEIGHT_LABEL)) &&( y>GameConfiguration.Y_HOME_LABEL);
-		}
 
+
+		
 	}
